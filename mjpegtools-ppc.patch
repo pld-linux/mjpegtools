@@ -1,0 +1,12 @@
+diff -urN mjpegtools-1.6.1.orig/configure.in mjpegtools-1.6.1/configure.in
+--- mjpegtools-1.6.1.orig/configure.in	Sat Jun  7 21:52:30 2003
++++ mjpegtools-1.6.1/configure.in	Sat Jun  7 21:52:56 2003
+@@ -253,8 +253,6 @@
+ AC_SUBST(MOVTAR_CFLAGS)
+ AC_SUBST(MOVTAR_LIBS)
+ have_movtar=false
+-ifdef([AM_PATH_MOVTAR],
+-      [ AM_PATH_MOVTAR(0.0.2, [ AC_DEFINE(HAVE_LIBMOVTAR) have_movtar=true],,) ])
+ 
+ dnl *********************************************************************
+ dnl Check for the quicktime for linux library
