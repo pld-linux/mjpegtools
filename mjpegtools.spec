@@ -25,6 +25,7 @@ BuildRequires:	libmovtar-devel >= 0.0.2
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
 BuildRequires:	quicktime4linux-devel >= 1.4
+BuildRequires:	nas-devel
 Requires:	%{name}-libs = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libmjpegtools0
