@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
+# Source0-md5: fa2aeec19deafe86d22b34eda329f9f4
 Patch0:		%{name}-moreshared.patch
 Patch1:		%{name}-acam.patch
 URL:		http://mjpeg.sourceforge.net/
