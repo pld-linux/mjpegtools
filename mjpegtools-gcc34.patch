@@ -1,0 +1,28 @@
+diff -urN aa/mjpegtools-1.6.2/lavtools/lavpipe.c mjpegtools-1.6.2/lavtools/lavpipe.c
+--- aa/mjpegtools-1.6.2/lavtools/lavpipe.c	2002-09-23 21:46:43.000000000 +0200
++++ mjpegtools-1.6.2/lavtools/lavpipe.c	2004-07-02 21:37:32.556955464 +0200
+@@ -581,7 +581,7 @@
+       }
+       mjpeg_info( "closing input %d (source %d)", i, current_index);
+       decommission_pipe_source(source);
+-    KEEP_SOURCE:
++    KEEP_SOURCE:;
+     }
+   }
+ }
+diff -urN aa/mjpegtools-1.6.2/mpeg2enc/picture.cc mjpegtools-1.6.2/mpeg2enc/picture.cc
+--- aa/mjpegtools-1.6.2/mpeg2enc/picture.cc	2003-10-25 19:36:32.000000000 +0200
++++ mjpegtools-1.6.2/mpeg2enc/picture.cc	2004-07-02 21:38:35.028458352 +0200
+@@ -83,9 +83,9 @@
+     }
+ 
+ 
+-	curref = new (uint8_t *)[5];
+-	curorg = new (uint8_t *)[5];
+-	pred   = new (uint8_t *)[5];
++	curref = new uint8_t *[5];
++	curorg = new uint8_t *[5];
++	pred   = new uint8_t *[5];
+ 
+ 	for( i = 0 ; i<3; i++)
+ 	{
