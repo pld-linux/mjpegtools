@@ -8,10 +8,10 @@ diff -Nur mjpegtools-1.6.0.orig/aenc/Makefile.am mjpegtools-1.6.0/aenc/Makefile.
 -mp2enc_LDADD = -L$(top_builddir)/utils -lmjpegutils $(LIBM_LIBS)
 +mp2enc_LDADD = $(top_builddir)/utils/libmjpegutils.la $(LIBM_LIBS)
  
-diff -Nur mjpegtools-1.6.0.orig/lavtools/Makefile.am mjpegtools-1.6.0/lavtools/Makefile.am
---- mjpegtools-1.6.0.orig/lavtools/Makefile.am	Sat Apr 27 22:52:30 2002
-+++ mjpegtools-1.6.0/lavtools/Makefile.am	Sat Dec 21 19:42:34 2002
-@@ -93,91 +93,91 @@
+diff -Nur mjpegtools-1.6.1.orig/lavtools/Makefile.am mjpegtools-1.6.1/lavtools/Makefile.am
+--- mjpegtools-1.6.1.orig/lavtools/Makefile.am	Sat Apr 27 22:52:30 2002
++++ mjpegtools-1.6.1/lavtools/Makefile.am	Sat Dec 21 19:42:34 2002
+@@ -93,94 +93,94 @@
  	yuvscaler.h frequencies.h lav_common.h lav2wav.h
  
  ypipe_SOURCES = ypipe.c $(lav_headers)
@@ -30,6 +30,10 @@ diff -Nur mjpegtools-1.6.0.orig/lavtools/Makefile.am mjpegtools-1.6.0/lavtools/M
  matteblend_flt_SOURCES = matteblend.flt.c ${lav_headers}
 -matteblend_flt_LDADD = -L$(top_builddir)/utils -lmjpegutils
 +matteblend_flt_LDADD = $(top_builddir)/utils/libmjpegutils.la
+ 
+ multiblend_flt_SOURCES = multiblend.flt.c ${lav_headers}
+-multiblend_flt_LDADD = -L$(top_builddir)/utils -lmjpegutils
++multiblend_flt_LDADD = $(top_builddir)/utils/libmjpegutils.la
  
  lavplay_SOURCES = lavplay.c ${lav_headers}
 -lavplay_LDADD = -L$(top_builddir)/utils -lmjpegutils \
@@ -120,7 +124,7 @@ diff -Nur mjpegtools-1.6.0.orig/lavtools/Makefile.am mjpegtools-1.6.0/lavtools/M
  divxdec_SOURCES = divxdec.cpp riffinfo.h libavifile.h lav_common.c
 -divxdec_LDADD = $(PTHREAD_LIBS) -L$(top_builddir)/utils -lmjpegutils \
 +divxdec_LDADD = $(PTHREAD_LIBS) $(top_builddir)/utils/libmjpegutils.la \
- 	$(AVIPLAY_LIBS) $(LIBM_LIBS) \
+ 	$(AVIPLAY_LIBS) $(LIBM_LIBS) ${SDL_LIBS} ${X_LIBS} -lX11 \
  	liblavfile.la liblavplay.la liblavjpeg.la
  
  lavinfo_SOURCES = lavinfo.c $(lav_headers)

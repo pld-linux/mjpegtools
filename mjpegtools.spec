@@ -1,11 +1,11 @@
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
 Summary(pl):	Narzêdzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
-Version:	1.6.0
+Version:	1.6.1
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
-Source0:	http://prdownloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/mjpeg/%{name}-%{version}.tar.gz
 Patch0:		%{name}-moreshared.patch
 Patch1:		%{name}-acam.patch
 URL:		http://mjpeg.sourceforge.net/
