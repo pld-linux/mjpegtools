@@ -2,7 +2,7 @@ Summary:	Tools for recording, editing, playing back and MPEG-encoding video unde
 Summary(pl):	Narzêdzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
 Version:	1.6.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Graphics
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/mjpeg/%{name}-%{version}.tar.gz
@@ -123,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %files libs
+%defattr(644,root,root,755)
 %doc AUTHORS BUGS CHANGES HINTS PLANS README TODO
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man5/*
