@@ -10,6 +10,7 @@ Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
 Patch0:		%{name}-moreshared.patch
 Patch1:		%{name}-acam.patch
 Patch2:		%{name}-link.patch
+Patch3:		%{name}-gcc34.patch
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.1.3
 BuildRequires:	XFree86-devel
@@ -85,6 +86,7 @@ Statyczne biblioteki mjpegtools.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}
