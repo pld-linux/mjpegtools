@@ -1,30 +1,28 @@
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
 Summary(pl):	Narzêdzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
-Version:	1.6.1
-Release:	2.1
+Version:	1.6.1.90
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
-# Source0-md5: fa2aeec19deafe86d22b34eda329f9f4
+# Source0-md5:	a903c49ee5902710b8e44bd6c0f4b38e
 Patch0:		%{name}-moreshared.patch
 Patch1:		%{name}-acam.patch
 Patch2:		%{name}-ppc.patch
-Patch3:		%{name}-assert.patch
 URL:		http://mjpeg.sourceforge.net/
-BuildRequires:	SDL-devel
+BuildRequires:	SDL-devel >= 1.1.3
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	avifile-devel
-BuildRequires:	gtk+-devel
-BuildRequires:	libdv >= 0.9.5
+BuildRequires:	gtk+-devel >= 1.2.0
+BuildRequires:	libdv-devel >= 0.9.5
 BuildRequires:	libjpeg-devel
 %ifnarch ppc
 BuildRequires:	libmovtar-devel >= 0.0.2
 %endif
 BuildRequires:	libpng-devel
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:1.5
 BuildRequires:	quicktime4linux-devel >= 1.4
 BuildRequires:	nas-devel
 Requires:	%{name}-libs = %{version}
@@ -89,12 +87,10 @@ Statyczne biblioteki mjpegtools.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-
 %ifarch ppc
-%patch2 -p1
+# not updated, but shouldn't be needed
+#%patch2 -p1
 %endif
-
-%patch3 -p1
 
 %build
 %{__libtoolize}
@@ -102,7 +98,7 @@ Statyczne biblioteki mjpegtools.
 %{__autoconf}
 %{__automake}
 %configure \
-	--with-dv=/usr/X11R6/lib \
+	--with-dv=/usr \
 	--with-quicktime=/usr/include/quicktime \
 %ifnarch i686 athlon
 	--disable-cmov-extension \
@@ -116,10 +112,17 @@ Statyczne biblioteki mjpegtools.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
+
+%postun
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
@@ -128,16 +131,19 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/lav*
 %attr(755,root,root) %{_bindir}/yuv*
+%attr(755,root,root) %{_bindir}/img2mpg
 %attr(755,root,root) %{_bindir}/jpeg2yuv
-%attr(755,root,root) %{_bindir}/divxdec
 %attr(755,root,root) %{_bindir}/testrec
 %attr(755,root,root) %{_bindir}/y4m*
+%attr(755,root,root) %{_bindir}/pgm*
+%attr(755,root,root) %{_bindir}/png2yuv
 %attr(755,root,root) %{_bindir}/ppm*
 %attr(755,root,root) %{_bindir}/glav
 %attr(755,root,root) %{_bindir}/ypipe
 %attr(755,root,root) %{_bindir}/mp*
 %attr(755,root,root) %{_bindir}/*.flt
 %{_mandir}/man1/*
+%{_infodir}/mjpeg-howto*
 
 %files libs
 %defattr(644,root,root,755)
