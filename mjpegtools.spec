@@ -1,12 +1,12 @@
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
 Summary(pl):	Narzêdzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
-Version:	1.6.1.90
+Version:	1.6.1.92
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
-# Source0-md5:	a903c49ee5902710b8e44bd6c0f4b38e
+# Source0-md5:	254aaadf56b0a6ee428bd937024801a2
 Patch0:		%{name}-moreshared.patch
 Patch1:		%{name}-acam.patch
 Patch2:		%{name}-ppc.patch
@@ -130,7 +130,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/lav*
 %attr(755,root,root) %{_bindir}/yuv*
-%attr(755,root,root) %{_bindir}/img2mpg
 %attr(755,root,root) %{_bindir}/jpeg2yuv
 %attr(755,root,root) %{_bindir}/testrec
 %attr(755,root,root) %{_bindir}/y4m*
@@ -155,8 +154,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%dir %{_includedir}/mjpegtools
-%{_includedir}/mjpegtools/*.h
+%{_includedir}/mjpegtools
 %{_pkgconfigdir}/*.pc
 
 %files static
