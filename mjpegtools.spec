@@ -9,6 +9,7 @@ Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
 # Source0-md5: fa2aeec19deafe86d22b34eda329f9f4
 Patch0:		%{name}-moreshared.patch
 Patch1:		%{name}-acam.patch
+Patch2:		%{name}-ppc.patch
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel
 BuildRequires:	XFree86-devel
@@ -19,7 +20,7 @@ BuildRequires:	gtk+-devel
 BuildRequires:	libdv >= 0.9.5
 BuildRequires:	libjpeg-devel
 %ifnarch ppc
-BuildRequires:	libmovtar-devel >= 0.0.2
+    BuildRequires:	libmovtar-devel >= 0.0.2
 %endif
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
@@ -86,6 +87,10 @@ Statyczne biblioteki mjpegtools.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+
+%ifarch ppc
+    %patch2 -p1
+%endif
 
 %build
 %{__libtoolize}
