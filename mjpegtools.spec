@@ -5,7 +5,7 @@ Version:	1.6.1
 Release:	2
 License:	GPL
 Group:		Applications/Graphics
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/mjpeg/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
 Patch0:		%{name}-moreshared.patch
 Patch1:		%{name}-acam.patch
 URL:		http://mjpeg.sourceforge.net/
