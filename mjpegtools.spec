@@ -101,7 +101,10 @@ Statyczne biblioteki mjpegtools.
 	--with-dv=/usr/X11R6/lib \
 	--with-quicktime=/usr/include/quicktime \
 %ifnarch i686 athlon
-	--disable-cmov-extension
+	--disable-cmov-extension \
+%endif
+%ifarch ppc
+	--disable-simd-accel
 %endif
 
 %{__make}
