@@ -18,7 +18,9 @@ BuildRequires:	avifile-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	libdv >= 0.9.5
 BuildRequires:	libjpeg-devel
+%ifnarch ppc
 BuildRequires:	libmovtar-devel >= 0.0.2
+%endif
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
 BuildRequires:	quicktime4linux-devel >= 1.4
