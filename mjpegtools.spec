@@ -22,7 +22,7 @@ BuildRequires:	libmovtar-devel >= 0.0.2
 BuildRequires:	libpng-devel
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	quicktime4linux-devel >= 1.4
-Requires:	%{name}-libs = %{version}
+Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libmjpegtools0
 
@@ -57,7 +57,7 @@ Biblioteki wspó³dzielone MJPEG-tools.
 Summary:	Development headers for the mjpegtools
 Summary(pl):	Pliki nag³ówkowe mjpegtools
 Group:		Development/Libraries
-Requires:	%{name}-libs = %{version}
+Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	libmjpegtools0-devel
 
 %description devel
@@ -72,7 +72,7 @@ aplikacji u¿ywaj±cych czê¶ci bibliotek z pakietu mjpegtools.
 Summary:	Static libraries for mjpegtools
 Summary(pl):	Statyczne biblioteki mjpegtools
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libraries for mjpegtools.
