@@ -2,7 +2,7 @@ Summary:	Tools for recording, editing, playing back and MPEG-encoding video unde
 Summary(pl):	Narzêdzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
 Version:	1.6.1
-Release:	2
+Release:	2.1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
@@ -20,7 +20,7 @@ BuildRequires:	gtk+-devel
 BuildRequires:	libdv >= 0.9.5
 BuildRequires:	libjpeg-devel
 %ifnarch ppc
-    BuildRequires:	libmovtar-devel >= 0.0.2
+BuildRequires:	libmovtar-devel >= 0.0.2
 %endif
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
@@ -89,7 +89,7 @@ Statyczne biblioteki mjpegtools.
 %patch1 -p1
 
 %ifarch ppc
-    %patch2 -p1
+%patch2 -p1
 %endif
 
 %build
