@@ -1,0 +1,54 @@
+--- mjpegtools-1.6.1.93/lavtools/Makefile.am.orig	2004-01-17 23:57:49.000000000 +0100
++++ mjpegtools-1.6.1.93/lavtools/Makefile.am	2004-01-18 00:16:47.520474480 +0100
+@@ -45,16 +45,28 @@
+ liblavfile_la_SOURCES = editlist.c lav_io.c avilib.c
+ liblavfile_la_LDFLAGS = $(LAV_ALL_LIB_OPTS) \
+ 	$(QUICKTIME_LIBS) $(JPEG_LIBS) $(DV_LIBS)
++liblavfile_la_LIBADD = $(top_builddir)/utils/libmjpegutils.la
+ 
+ liblavjpeg_la_SOURCES = jpegutils.c
+ liblavjpeg_la_LDFLAGS = $(LAV_ALL_LIB_OPTS) $(JPEG_LIBS)
++liblavjpeg_la_LIBADD = $(top_builddir)/utils/libmjpegutils.la
+ 
+ liblavrec_la_SOURCES = liblavrec.c audiolib.c frequencies.c
+ liblavrec_la_LDFLAGS = $(LAV_ALL_LIB_OPTS)
++liblavrec_la_LIBADD = liblavfile.la liblavjpeg.la \
++	$(top_builddir)/utils/libmjpegutils.la \
++	$(PTHREAD_LIBS)
+ liblavrec_la_CFLAGS = $(AM_CFLAGS)
+ 
++if HAVE_X
++  LAVPLAY_X_LIBS = $(X_LIBS) -lX11
++endif
++
+ liblavplay_la_SOURCES = liblavplay.c audiolib.c
+ liblavplay_la_LDFLAGS = $(LAV_ALL_LIB_OPTS)
++liblavplay_la_LIBADD = liblavfile.la liblavjpeg.la \
++	$(top_builddir)/utils/libmjpegutils.la \
++	$(PTHREAD_LIBS) $(SDL_LIBS) $(LAVPLAY_X_LIBS)
+ liblavplay_la_CFLAGS = $(AM_CFLAGS)
+ 
+ # *********************************************************************
+@@ -148,10 +160,6 @@
+ multiblend_flt_SOURCES = multiblend.flt.c
+ multiblend_flt_LDADD = $(top_builddir)/utils/libmjpegutils.la
+ 
+-if HAVE_X
+-  LAVPLAY_X_LIBS = $(X_LIBS) -lX11
+-endif
+-
+ lavplay_SOURCES = lavplay.c
+ lavplay_LDADD = $(top_builddir)/utils/libmjpegutils.la \
+ 	liblavplay.la liblavjpeg.la liblavfile.la \
+--- mjpegtools-1.6.1.93/mpeg2enc/Makefile.am.orig	2004-01-17 23:57:49.000000000 +0100
++++ mjpegtools-1.6.1.93/mpeg2enc/Makefile.am	2004-01-18 00:10:00.416363712 +0100
+@@ -122,7 +122,8 @@
+ 	$(top_builddir)/utils/libmjpegutils.la \
+ 	$(top_builddir)/utils/libcpuaccel.la \
+ 	$(top_builddir)/utils/libmotion.la \
+-	$(LIBSIMDASM_LIB)
++	$(LIBSIMDASM_LIB) \
++	@PTHREAD_LIBS@
+ 
+ mpeg2enc_DEPENDENCIES = \
+ 	$(top_builddir)/utils/libmjpegutils.la \
