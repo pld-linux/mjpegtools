@@ -23,7 +23,7 @@ BuildRequires:	libtool
 BuildRequires:	quicktime4linux-devel >= 1.4
 Requires:	%{name}-libs = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Obsoleted:	libmjpegtools0
+Obsoletes:	libmjpegtools0
 
 %description
 The MJPEG-tools are a basic set of utilities for recording, editing,
@@ -57,7 +57,7 @@ Summary:	Development headers for the mjpegtools
 Summary(pl):	Pliki nag³ówkowe mjpegtools
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}
-Obsoleted:	libmjpegtools0-devel
+Obsoletes:	libmjpegtools0-devel
 
 %description devel
 This package contains C system header files needed to compile
