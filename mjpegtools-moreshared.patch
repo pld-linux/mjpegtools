@@ -1,16 +1,16 @@
-diff -Nur mjpegtools-1.6.1.92.orig/aenc/Makefile.am mjpegtools-1.6.1.92/aenc/Makefile.am
---- mjpegtools-1.6.1.92.orig/aenc/Makefile.am	2003-11-24 23:15:20.000000000 +0100
-+++ mjpegtools-1.6.1.92/aenc/Makefile.am	2003-12-05 00:26:19.975308080 +0100
+diff -Nur mjpegtools-1.6.1.93.orig/aenc/Makefile.am mjpegtools-1.6.1.93/aenc/Makefile.am
+--- mjpegtools-1.6.1.93.orig/aenc/Makefile.am	2003-11-24 23:15:20.000000000 +0100
++++ mjpegtools-1.6.1.93/aenc/Makefile.am	2004-01-17 23:49:44.626191912 +0100
 @@ -27,4 +27,4 @@
  	table_th.h \
  	wav_io.h
  
 -mp2enc_LDADD = $(top_builddir)/utils/libmjpegutils.a $(LIBM_LIBS)
 +mp2enc_LDADD = $(top_builddir)/utils/libmjpegutils.la $(LIBM_LIBS)
-diff -Nur mjpegtools-1.6.1.92.orig/lavtools/Makefile.am mjpegtools-1.6.1.92/lavtools/Makefile.am
---- mjpegtools-1.6.1.92.orig/lavtools/Makefile.am	2003-11-25 00:03:34.000000000 +0100
-+++ mjpegtools-1.6.1.92/lavtools/Makefile.am	2003-12-05 00:26:19.977307776 +0100
-@@ -132,114 +132,114 @@
+diff -Nur mjpegtools-1.6.1.93.orig/lavtools/Makefile.am mjpegtools-1.6.1.93/lavtools/Makefile.am
+--- mjpegtools-1.6.1.93.orig/lavtools/Makefile.am	2004-01-07 21:37:32.000000000 +0100
++++ mjpegtools-1.6.1.93/lavtools/Makefile.am	2004-01-17 23:51:10.209181320 +0100
+@@ -133,113 +133,113 @@
  	yuvcorrect.h
  
  ypipe_SOURCES = ypipe.c
@@ -60,9 +60,8 @@ diff -Nur mjpegtools-1.6.1.92.orig/lavtools/Makefile.am mjpegtools-1.6.1.92/lavt
  		liblavfile.la liblavjpeg.la $(DV_LIBS)
  
  jpeg2yuv_SOURCES = jpeg2yuv.c
--jpeg2yuv_LDADD = $(top_builddir)/utils/libmjpegutils.a \
-+jpeg2yuv_LDADD = $(top_builddir)/utils/libmjpegutils.la \
- 		liblavjpeg.la ${GTK_LIBS}
+-jpeg2yuv_LDADD = $(top_builddir)/utils/libmjpegutils.a liblavjpeg.la
++jpeg2yuv_LDADD = $(top_builddir)/utils/libmjpegutils.la liblavjpeg.la
  
  png2yuv_SOURCES = png2yuv.c colorspace.c subsample.c
 -png2yuv_LDADD = $(top_builddir)/utils/libmjpegutils.a -lpng -lz -lm
@@ -98,19 +97,16 @@ diff -Nur mjpegtools-1.6.1.92.orig/lavtools/Makefile.am mjpegtools-1.6.1.92/lavt
  lavvideo_SOURCES = lavvideo.c frequencies.c
  
  yuvscaler_SOURCES = yuvscaler.c yuvscaler_resample.c yuvscaler_bicubic.c
--yuvscaler_LDADD = $(top_builddir)/utils/libmjpegutils.a $(LIBM_LIBS) \
-+yuvscaler_LDADD = $(top_builddir)/utils/libmjpegutils.la $(LIBM_LIBS) \
- 	 liblavfile.la liblavjpeg.la
+-yuvscaler_LDADD = $(top_builddir)/utils/libmjpegutils.a $(LIBM_LIBS)
++yuvscaler_LDADD = $(top_builddir)/utils/libmjpegutils.la $(LIBM_LIBS)
  
  yuvcorrect_SOURCES = yuvcorrect.c yuvcorrect_functions.c
--yuvcorrect_LDADD = $(top_builddir)/utils/libmjpegutils.a $(LIBM_LIBS) \
-+yuvcorrect_LDADD = $(top_builddir)/utils/libmjpegutils.la $(LIBM_LIBS) \
-         liblavfile.la liblavjpeg.la
+-yuvcorrect_LDADD = $(top_builddir)/utils/libmjpegutils.a $(LIBM_LIBS)
++yuvcorrect_LDADD = $(top_builddir)/utils/libmjpegutils.la $(LIBM_LIBS)
  
  yuvcorrect_tune_SOURCES = yuvcorrect_tune.c yuvcorrect_functions.c
--yuvcorrect_tune_LDADD = $(top_builddir)/utils/libmjpegutils.a $(LIBM_LIBS) \
-+yuvcorrect_tune_LDADD = $(top_builddir)/utils/libmjpegutils.la $(LIBM_LIBS) \
-         liblavfile.la liblavjpeg.la
+-yuvcorrect_tune_LDADD = $(top_builddir)/utils/libmjpegutils.a $(LIBM_LIBS)
++yuvcorrect_tune_LDADD = $(top_builddir)/utils/libmjpegutils.la $(LIBM_LIBS)
  
  yuvplay_SOURCES = yuvplay.c
 -yuvplay_LDADD = $(SDL_LIBS) $(PTHREAD_LIBS) $(top_builddir)/utils/libmjpegutils.a
@@ -145,6 +141,10 @@ diff -Nur mjpegtools-1.6.1.92.orig/lavtools/Makefile.am mjpegtools-1.6.1.92/lavt
 -y4mblack_LDADD = $(top_builddir)/utils/libmjpegutils.a
 +y4mblack_LDADD = $(top_builddir)/utils/libmjpegutils.la
  
+ y4mtoyuv_SOURCES = y4mtoyuv.c
+-y4mtoyuv_LDADD = $(top_builddir)/utils/libmjpegutils.a
++y4mtoyuv_LDADD = $(top_builddir)/utils/libmjpegutils.la
+ 
  yuv4mpeg_SOURCES = yuv4mpeg.c
 -yuv4mpeg_LDADD = $(top_builddir)/utils/libmjpegutils.a
 +yuv4mpeg_LDADD = $(top_builddir)/utils/libmjpegutils.la
@@ -156,128 +156,58 @@ diff -Nur mjpegtools-1.6.1.92.orig/lavtools/Makefile.am mjpegtools-1.6.1.92/lavt
  yuvinactive_SOURCES = yuvinactive.c
 -yuvinactive_LDADD = ${top_builddir}/utils/libmjpegutils.a
 +yuvinactive_LDADD = ${top_builddir}/utils/libmjpegutils.la
-diff -Nur mjpegtools-1.6.1.92.orig/mpeg2enc/Makefile.am mjpegtools-1.6.1.92/mpeg2enc/Makefile.am
---- mjpegtools-1.6.1.92.orig/mpeg2enc/Makefile.am	2003-11-25 15:16:44.000000000 +0100
-+++ mjpegtools-1.6.1.92/mpeg2enc/Makefile.am	2003-12-05 00:28:22.394697504 +0100
-@@ -29,16 +29,16 @@
- lib_LTLIBRARIES = libmpeg2encpp.la
- 
- if HAVE_ALTIVEC
--LIBSIMDASM_LIB = $(top_builddir)/utils/altivec/libaltivec.a
-+LIBSIMDASM_LIB = $(top_builddir)/utils/altivec/libaltivec.la
- SIMD_INLINE = 
- else # HAVE_ALTIVEC
- if HAVE_ASM_MMX
- if HAVE_ASM_NASM
--noinst_LIBRARIES = libmmxsseasm.a
--libmmxsseasm_a_SOURCES = $(mpeg2encpp_MMXSSE_ASM)
-+noinst_LTLIBRARIES = libmmxsseasm.la
-+libmmxsseasm_la_SOURCES = $(mpeg2encpp_MMXSSE_ASM)
- SIMD_INLINE = $(mpeg2encpp_MMXSSE_INLINE)
--LIBSIMDASM_LIB = libmmxsseasm.a \
--	$(top_builddir)/utils/mmxsse/libmmxsse.a
-+LIBSIMDASM_LIB = libmmxsseasm.la \
-+	$(top_builddir)/utils/mmxsse/libmmxsse.la
- else # HAVE_ASM_NASM
- LIBSIMDASM_LIB = 
- SIMD_INLINE = 
-@@ -125,15 +125,15 @@
+diff -Nur mjpegtools-1.6.1.93.orig/mpeg2enc/Makefile.am mjpegtools-1.6.1.93/mpeg2enc/Makefile.am
+--- mjpegtools-1.6.1.93.orig/mpeg2enc/Makefile.am	2003-12-20 18:01:18.000000000 +0100
++++ mjpegtools-1.6.1.93/mpeg2enc/Makefile.am	2004-01-17 23:53:55.403068032 +0100
+@@ -113,24 +113,24 @@
  	-export-dynamic 
  
  libmpeg2encpp_la_DEPENDENCIES = \
--	$(top_builddir)/utils/libcpuaccel.a \
 -	$(top_builddir)/utils/libmjpegutils.a \
--	$(top_builddir)/utils/libmotion.a \
-+	$(top_builddir)/utils/libcpuaccel.la \
 +	$(top_builddir)/utils/libmjpegutils.la \
-+	$(top_builddir)/utils/libmotion.la \
+ 	$(top_builddir)/utils/libcpuaccel.la \
+ 	$(top_builddir)/utils/libmotion.la \
  	$(LIBSIMDASM_LIB)
  
  libmpeg2encpp_la_LIBADD = \
--	$(top_builddir)/utils/libcpuaccel.a \
 -	$(top_builddir)/utils/libmjpegutils.a \
--	$(top_builddir)/utils/libmotion.a \
-+	$(top_builddir)/utils/libcpuaccel.la \
 +	$(top_builddir)/utils/libmjpegutils.la \
-+	$(top_builddir)/utils/libmotion.la \
+ 	$(top_builddir)/utils/libcpuaccel.la \
+ 	$(top_builddir)/utils/libmotion.la \
  	$(LIBSIMDASM_LIB)
  
  mpeg2enc_DEPENDENCIES = \
-@@ -146,8 +146,16 @@
- # VITAL: Override default compilation rules generated by automake...
- # It shoves in a -c flag that nasm barfs on...
- 
-+NO_FPIC = $(SHELL) $(top_srcdir)/strip_fPIC.sh
-+CCASCOMPILE = $(AS) $(ASFLAGS)
-+LTCCASCOMPILE = $(LIBTOOL) --mode=compile --tag=ASM $(NO_FPIC) $(CCASCOMPILE)
-+
-+%.lo: %.s ;	$(LTCCASCOMPILE) -o $@ $<
-+
- %.o: %.s ; 	$(AS) $(ASFLAGS) -o $@ $<
- 
-+%.lo: %.x86c ;	$(LIBTOOL) --mode=compile $(CC) $(CFLAGS) -mmmx -o $@ $<
-+
- %.o: %.x86c ; 	$(CC) $(CFLAGS) -mmmx -o $@ $<
- 
- # Comment....
-diff -Nur mjpegtools-1.6.1.92.orig/mplex/Makefile.am mjpegtools-1.6.1.92/mplex/Makefile.am
---- mjpegtools-1.6.1.92.orig/mplex/Makefile.am	2003-11-24 23:29:44.000000000 +0100
-+++ mjpegtools-1.6.1.92/mplex/Makefile.am	2003-12-05 00:26:19.979307472 +0100
-@@ -57,7 +57,7 @@
- 	videostrm.hpp
- 
- mplex_LDADD = \
 -	$(top_builddir)/utils/libmjpegutils.a \
 +	$(top_builddir)/utils/libmjpegutils.la \
- 	@LIBGETOPT_LIB@ $(LIBM_LIBS) 
+ 	$(top_builddir)/mpeg2enc/libmpeg2encpp.la
  
- mplex_CXXFLAGS = $(ZALPHA_FLAGS)
-diff -Nur mjpegtools-1.6.1.92.orig/strip_fPIC.sh mjpegtools-1.6.1.92/strip_fPIC.sh
---- mjpegtools-1.6.1.92.orig/strip_fPIC.sh	1970-01-01 01:00:00.000000000 +0100
-+++ mjpegtools-1.6.1.92/strip_fPIC.sh	2003-12-05 00:26:19.979307472 +0100
-@@ -0,0 +1,17 @@
-+#!/bin/sh
-+#
-+# taken from flac sources  --qboosh
-+#
-+# libtool assumes that the compiler can handle the -fPIC flag
-+# This isn't always true (for example, nasm can't handle it)
-+command=""
-+while [ $1 ]; do
-+	if [ "$1" != "-fPIC" ]; then
-+		if [ "$1" != "-DPIC" ]; then
-+			command="$command $1"
-+		fi
-+	fi
-+	shift
-+done
-+echo $command
-+exec $command
-diff -Nur mjpegtools-1.6.1.92.orig/utils/altivec/Makefile.am mjpegtools-1.6.1.92/utils/altivec/Makefile.am
---- mjpegtools-1.6.1.92.orig/utils/altivec/Makefile.am	2003-11-26 09:42:11.000000000 +0100
-+++ mjpegtools-1.6.1.92/utils/altivec/Makefile.am	2003-12-05 00:26:19.980307320 +0100
-@@ -5,9 +5,9 @@
- COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
- 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) $(ALTIVEC_CFLAGS)
+ mpeg2enc_LDADD = \
+ 	$(top_builddir)/mpeg2enc/libmpeg2encpp.la \
+-	$(top_builddir)/utils/libmjpegutils.a \
++	$(top_builddir)/utils/libmjpegutils.la \
+ 	@PTHREAD_LIBS@ @LIBGETOPT_LIB@ $(LIBM_LIBS)
  
--noinst_LIBRARIES = libaltivec.a
-+noinst_LTLIBRARIES = libaltivec.la
+ # VITAL: Override default compilation rules generated by automake...
+diff -Nur mjpegtools-1.6.1.93.orig/mplex/Makefile.am mjpegtools-1.6.1.93/mplex/Makefile.am
+--- mjpegtools-1.6.1.93.orig/mplex/Makefile.am	2003-12-20 18:00:21.000000000 +0100
++++ mjpegtools-1.6.1.93/mplex/Makefile.am	2004-01-17 23:54:39.797319080 +0100
+@@ -67,7 +67,7 @@
+ 	-export-dynamic 
  
--libaltivec_a_SOURCES = \
-+libaltivec_la_SOURCES = \
- 	add_pred.c \
- 	amber.c \
- 	benchmark.c \
-diff -Nur mjpegtools-1.6.1.92.orig/utils/Makefile.am mjpegtools-1.6.1.92/utils/Makefile.am
---- mjpegtools-1.6.1.92.orig/utils/Makefile.am	2003-11-26 10:20:19.000000000 +0100
-+++ mjpegtools-1.6.1.92/utils/Makefile.am	2003-12-05 00:26:19.981307168 +0100
-@@ -13,10 +13,10 @@
+ libmplex2_la_LIBADD = \
+-	$(top_builddir)/utils/libmjpegutils.a
++	$(top_builddir)/utils/libmjpegutils.la
  
- INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/utils
+ libmplex2_la_CXXFLAGS = $(ZALPHA_FLAGS)
  
--noinst_LIBRARIES = libmotion.a libcpuaccel.a
+diff -Nur mjpegtools-1.6.1.93.orig/utils/Makefile.am mjpegtools-1.6.1.93/utils/Makefile.am
+--- mjpegtools-1.6.1.93.orig/utils/Makefile.am	2003-12-20 17:53:04.000000000 +0100
++++ mjpegtools-1.6.1.93/utils/Makefile.am	2004-01-17 23:56:10.667504712 +0100
+@@ -16,9 +16,9 @@
+ noinst_LTLIBRARIES = libmotion.la libcpuaccel.la
+ 
+ # FIXME: make this libtool (but static-only!) too
 -lib_LIBRARIES = libmjpegutils.a
-+noinst_LTLIBRARIES = libmotion.la libcpuaccel.la
 +lib_LTLIBRARIES = libmjpegutils.la
  
 -libmjpegutils_a_SOURCES = \
@@ -285,96 +215,25 @@ diff -Nur mjpegtools-1.6.1.92.orig/utils/Makefile.am mjpegtools-1.6.1.92/utils/M
  	mjpeg_logging.c \
  	mpegconsts.c \
  	mpegtimecode.c \
-@@ -34,7 +34,7 @@
- 	yuv4mpeg_intern.h
- 
- #if HAVE_ALTIVEC
--#altivec_lib = $(top_builddir)/utils/altivec/libaltivec.a
-+#altivec_lib = $(top_builddir)/utils/altivec/libaltivec.la
- #endif
- #if HAVE_ASM_NASM
- #if HAVE_ASM_MMX
-@@ -49,10 +49,10 @@
- 	mpegtimecode.h \
- 	yuv4mpeg.h
- 
--libmotion_a_SOURCES = \
-+libmotion_la_SOURCES = \
- 	motionsearch.c
- 
--libcpuaccel_a_SOURCES = \
-+libcpuaccel_la_SOURCES = \
- 	cpu_accel.c
- 
- #libcpuaccel_la_LIBADD = $(mmxsse_lib) $(altivec_lib)
-diff -Nur mjpegtools-1.6.1.92.orig/utils/mmxsse/Makefile.am mjpegtools-1.6.1.92/utils/mmxsse/Makefile.am
---- mjpegtools-1.6.1.92.orig/utils/mmxsse/Makefile.am	2003-11-26 10:20:35.000000000 +0100
-+++ mjpegtools-1.6.1.92/utils/mmxsse/Makefile.am	2003-12-05 00:26:19.981307168 +0100
-@@ -2,9 +2,9 @@
- 
- INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/utils
- 
--noinst_LIBRARIES = libmmxsse.a
-+noinst_LTLIBRARIES = libmmxsse.la
- 
--libmmxsse_a_SOURCES = \
-+libmmxsse_la_SOURCES = \
- 	build_sub44_mests.c \
- 	build_sub22_mests.c \
- 	find_best_one_pel.c \
-@@ -25,11 +25,11 @@
- 
- MAINTAINERCLEANFILES = Makefile.in
- 
--#NO_FPIC = $(SHELL) $(top_srcdir)/strip_fPIC.sh
--#CCASCOMPILE = $(AS) $(ASFLAGS)
--#LTCCASCOMPILE = $(LIBTOOL) --mode=compile --tag=ASM $(NO_FPIC) $(CCASCOMPILE)
--#
--#%.lo: %.s
--#	$(LTCCASCOMPILE) -o $@ $<
-+NO_FPIC = $(SHELL) $(top_srcdir)/strip_fPIC.sh
-+CCASCOMPILE = $(AS) $(ASFLAGS)
-+LTCCASCOMPILE = $(LIBTOOL) --mode=compile --tag=ASM $(NO_FPIC) $(CCASCOMPILE)
-+
-+%.lo: %.s
-+	$(LTCCASCOMPILE) -o $@ $<
- 
- %.o: %.s ; 	$(AS) $(ASFLAGS) -o $@ $<
-diff -Nur mjpegtools-1.6.1.92.orig/yuvdenoise/Makefile.am mjpegtools-1.6.1.92/yuvdenoise/Makefile.am
---- mjpegtools-1.6.1.92.orig/yuvdenoise/Makefile.am	2003-11-25 15:17:42.000000000 +0100
-+++ mjpegtools-1.6.1.92/yuvdenoise/Makefile.am	2003-12-05 00:26:19.982307016 +0100
-@@ -10,11 +10,11 @@
- bin_PROGRAMS = yuvdenoise
- 
- if HAVE_ALTIVEC
--CPULIB = $(top_builddir)/utils/altivec/libaltivec.a
-+CPULIB = $(top_builddir)/utils/altivec/libaltivec.la
- else # HAVE_ALTIVEC
- if HAVE_ASM_NASM
- if HAVE_ASM_MMX
--CPULIB = $(top_builddir)/utils/mmxsse/libmmxsse.a
-+CPULIB = $(top_builddir)/utils/mmxsse/libmmxsse.la
- else # HAVE_ASM_NASM
- CPULIB =
- endif # HAVE_ASM_NASM
-@@ -36,6 +36,6 @@
- 	motion.h
+diff -Nur mjpegtools-1.6.1.93.orig/yuvdenoise/Makefile.am mjpegtools-1.6.1.93/yuvdenoise/Makefile.am
+--- mjpegtools-1.6.1.93.orig/yuvdenoise/Makefile.am	2003-12-20 17:57:37.000000000 +0100
++++ mjpegtools-1.6.1.93/yuvdenoise/Makefile.am	2004-01-17 23:57:20.676861672 +0100
+@@ -25,5 +25,5 @@
  
  yuvdenoise_LDADD = \
--	$(top_builddir)/utils/libcpuaccel.a \
+ 	$(top_builddir)/utils/libcpuaccel.la \
 -	$(top_builddir)/utils/libmjpegutils.a \
-+	$(top_builddir)/utils/libcpuaccel.la \
 +	$(top_builddir)/utils/libmjpegutils.la \
- 	$(CPULIB) @LIBM_LIBS@
-diff -Nur mjpegtools-1.6.1.92.orig/yuvfilters/Makefile.am mjpegtools-1.6.1.92/yuvfilters/Makefile.am
---- mjpegtools-1.6.1.92.orig/yuvfilters/Makefile.am	2003-11-24 23:32:47.000000000 +0100
-+++ mjpegtools-1.6.1.92/yuvfilters/Makefile.am	2003-12-05 00:26:19.983306864 +0100
+ 	@LIBM_LIBS@
+diff -Nur mjpegtools-1.6.1.93.orig/yuvfilters/Makefile.am mjpegtools-1.6.1.93/yuvfilters/Makefile.am
+--- mjpegtools-1.6.1.93.orig/yuvfilters/Makefile.am	2003-12-21 13:58:52.000000000 +0100
++++ mjpegtools-1.6.1.93/yuvfilters/Makefile.am	2004-01-17 23:57:29.857466008 +0100
 @@ -7,7 +7,7 @@
- noinst_LIBRARIES = libyuvfilters.a
+ noinst_LTLIBRARIES = libyuvfilters.la
  
  AM_CPPFLAGS = -I$(top_srcdir)/utils
 -MJPEGLIB = $(top_builddir)/utils/libmjpegutils.a
 +MJPEGLIB = $(top_builddir)/utils/libmjpegutils.la
  
- libyuvfilters_a_SOURCES = \
+ libyuvfilters_la_SOURCES = \
  	addtask.c \
