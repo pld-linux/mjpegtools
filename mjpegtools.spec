@@ -83,10 +83,10 @@ Statyczne biblioteki mjpegtools.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+#%patch0 -p1
+#%patch1 -p1
+#%patch2 -p1
+#%patch3 -p1
 
 %build
 %{__libtoolize}
@@ -95,7 +95,7 @@ Statyczne biblioteki mjpegtools.
 %{__automake}
 %configure \
 	--with-dv=/usr \
-	--with-quicktime=/usr/include/quicktime \
+	--with-quicktime=%{_includedir}/quicktime \
 %ifnarch i686 athlon
 	--disable-cmov-extension \
 %endif
@@ -110,6 +110,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{_infodir}/dir*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -137,6 +139,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/ypipe
 %attr(755,root,root) %{_bindir}/mp*
 %attr(755,root,root) %{_bindir}/*.flt
+%attr(755,root,root) %{_bindir}/anytovcd.sh
+%attr(755,root,root) %{_bindir}/mjpeg_simd_helper
+%attr(755,root,root) %{_bindir}/pnmtoy4m
+%attr(755,root,root) %{_bindir}/yuyvtoy4m
 %{_mandir}/man1/*
 %{_infodir}/mjpeg-howto*
 
@@ -148,7 +154,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/mjpegtools
