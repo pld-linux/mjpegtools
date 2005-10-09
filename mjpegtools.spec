@@ -1,3 +1,6 @@
+# TODO
+# - configure:   - MPEG Z/Alpha                  : false
+# - configure:   - Quicktime playback/recording  : false
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
 Summary(pl):	Narzêdzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
