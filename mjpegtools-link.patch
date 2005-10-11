@@ -1,54 +1,43 @@
---- mjpegtools-1.6.1.93/lavtools/Makefile.am.orig	2004-01-17 23:57:49.000000000 +0100
-+++ mjpegtools-1.6.1.93/lavtools/Makefile.am	2004-01-18 00:16:47.520474480 +0100
-@@ -45,16 +45,28 @@
- liblavfile_la_SOURCES = editlist.c lav_io.c avilib.c
+--- mjpegtools-1.8.0/lavtools/Makefile.am.orig	2005-06-16 19:09:37.000000000 +0200
++++ mjpegtools-1.8.0/lavtools/Makefile.am	2005-10-11 10:13:32.000000000 +0200
+@@ -43,18 +43,29 @@
+ liblavfile_la_CPPFLAGS = $(AM_CPPFLAGS) $(LIBDV_CFLAGS) $(JPEG_CFLAGS) $(LIBQUICKTIME_CFLAGS)
  liblavfile_la_LDFLAGS = $(LAV_ALL_LIB_OPTS) \
- 	$(QUICKTIME_LIBS) $(JPEG_LIBS) $(DV_LIBS)
+ 	$(LIBQUICKTIME_LIBS) $(JPEG_LIBS) $(LIBDV_LIBS)
 +liblavfile_la_LIBADD = $(top_builddir)/utils/libmjpegutils.la
  
  liblavjpeg_la_SOURCES = jpegutils.c
+ liblavjpeg_la_CPPFLAGS = $(AM_CPPFLAGS) $(JPEG_CFLAGS)
  liblavjpeg_la_LDFLAGS = $(LAV_ALL_LIB_OPTS) $(JPEG_LIBS)
 +liblavjpeg_la_LIBADD = $(top_builddir)/utils/libmjpegutils.la
  
  liblavrec_la_SOURCES = liblavrec.c audiolib.c frequencies.c
+ liblavrec_la_CPPFLAGS = $(AM_CPPFLAGS) # so automake doesn't complain about audiolib & frequencies
  liblavrec_la_LDFLAGS = $(LAV_ALL_LIB_OPTS)
 +liblavrec_la_LIBADD = liblavfile.la liblavjpeg.la \
-+	$(top_builddir)/utils/libmjpegutils.la \
-+	$(PTHREAD_LIBS)
- liblavrec_la_CFLAGS = $(AM_CFLAGS)
- 
++	$(top_builddir)/utils/libmjpegutils.la
++
 +if HAVE_X
 +  LAVPLAY_X_LIBS = $(X_LIBS) -lX11
 +endif
-+
+ 
  liblavplay_la_SOURCES = liblavplay.c audiolib.c
+ liblavplay_la_CPPFLAGS = $(AM_CPPFLAGS) $(LIBDV_CFLAGS) $(X_CFLAGS)
  liblavplay_la_LDFLAGS = $(LAV_ALL_LIB_OPTS)
 +liblavplay_la_LIBADD = liblavfile.la liblavjpeg.la \
 +	$(top_builddir)/utils/libmjpegutils.la \
-+	$(PTHREAD_LIBS) $(SDL_LIBS) $(LAVPLAY_X_LIBS)
- liblavplay_la_CFLAGS = $(AM_CFLAGS)
++	$(SDL_LIBS) $(LAVPLAY_X_LIBS)
  
  # *********************************************************************
-@@ -148,10 +160,6 @@
+ # The tools themselves
+@@ -138,10 +149,6 @@
  multiblend_flt_SOURCES = multiblend.flt.c
- multiblend_flt_LDADD = $(top_builddir)/utils/libmjpegutils.la
+ multiblend_flt_LDADD = $(LIBMJPEGUTILS)
  
 -if HAVE_X
 -  LAVPLAY_X_LIBS = $(X_LIBS) -lX11
 -endif
 -
  lavplay_SOURCES = lavplay.c
- lavplay_LDADD = $(top_builddir)/utils/libmjpegutils.la \
+ lavplay_LDADD = $(LIBMJPEGUTILS) \
  	liblavplay.la liblavjpeg.la liblavfile.la \
---- mjpegtools-1.6.1.93/mpeg2enc/Makefile.am.orig	2004-01-17 23:57:49.000000000 +0100
-+++ mjpegtools-1.6.1.93/mpeg2enc/Makefile.am	2004-01-18 00:10:00.416363712 +0100
-@@ -122,7 +122,8 @@
- 	$(top_builddir)/utils/libmjpegutils.la \
- 	$(top_builddir)/utils/libcpuaccel.la \
- 	$(top_builddir)/utils/libmotion.la \
--	$(LIBSIMDASM_LIB)
-+	$(LIBSIMDASM_LIB) \
-+	@PTHREAD_LIBS@
- 
- mpeg2enc_DEPENDENCIES = \
- 	$(top_builddir)/utils/libmjpegutils.la \
