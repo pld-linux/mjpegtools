@@ -1,6 +1,8 @@
+#
+# Conditional build:
+%bcond_without	quicktime	# without Quicktime playback/recording support
 # TODO
 # - configure:   - MPEG Z/Alpha                  : false
-# - configure:   - Quicktime playback/recording  : false
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
 Summary(pl):	Narzêdzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
@@ -10,25 +12,23 @@ License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
 # Source0-md5:	6fd98362310480bdaf7171e9659f165f
-Patch0:		%{name}-moreshared.patch
-Patch1:		%{name}-acam.patch
-Patch2:		%{name}-link.patch
-Patch3:		%{name}-gcc34.patch
+Patch0:		%{name}-link.patch
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.1.3
 BuildRequires:	XFree86-devel
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	gtk+-devel >= 1.2.0
+BuildRequires:	autoconf >= 2.57
+BuildRequires:	automake >= 1:1.7
+BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	libdv-devel >= 0.9.5
 BuildRequires:	libjpeg-devel
 BuildRequires:	libmovtar-devel >= 0.0.2
 BuildRequires:	libpng-devel
+%{?with_quicktime:BuildRequires:	libquicktime-devel >= 0.9.4}
 BuildRequires:	libtool >= 2:1.5
-BuildRequires:	quicktime4linux-devel >= 1.4
+BuildRequires:	pkgconfig
 Requires:	%{name}-libs = %{version}-%{release}
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libmjpegtools0
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The MJPEG-tools are a basic set of utilities for recording, editing,
@@ -86,19 +86,17 @@ Statyczne biblioteki mjpegtools.
 
 %prep
 %setup -q
-#%patch0 -p1
-#%patch1 -p1
-#%patch2 -p1
-#%patch3 -p1
+%patch0 -p1
 
 %build
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--with-dv=/usr \
-	--with-quicktime=%{_includedir}/quicktime \
+	%{!?with_quicktime:--without-libquicktime} \
 %ifnarch i686 athlon
 	--disable-cmov-extension \
 %endif
