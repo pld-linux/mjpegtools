@@ -13,6 +13,7 @@ Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
 # Source0-md5:	6fd98362310480bdaf7171e9659f165f
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-headers.patch
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.1.3
 BuildRequires:	XFree86-devel
@@ -87,6 +88,7 @@ Statyczne biblioteki mjpegtools.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
