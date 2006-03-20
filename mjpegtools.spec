@@ -7,7 +7,7 @@ Summary:	Tools for recording, editing, playing back and MPEG-encoding video unde
 Summary(pl):	Narzêdzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
 Version:	1.8.0
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
@@ -99,11 +99,8 @@ Statyczne biblioteki mjpegtools.
 %{__autoheader}
 %{__automake}
 %configure \
-	--with-dv=/usr \
+	--with-dv=%{_prefix} \
 	%{!?with_quicktime:--without-libquicktime} \
-%ifnarch i686 athlon
-	--disable-cmov-extension \
-%endif
 %ifarch ppc
 	--disable-simd-accel
 %endif
