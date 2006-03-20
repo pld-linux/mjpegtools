@@ -1,0 +1,21 @@
+--- mjpegtools-1.8.0/lavtools/lav_io.c.orig	2005-08-27 13:47:20.000000000 +0200
++++ mjpegtools-1.8.0/lavtools/lav_io.c	2006-03-20 02:16:54.000000000 +0100
+@@ -1367,7 +1367,7 @@
+          break;
+ #ifdef HAVE_LIBQUICKTIME
+       case 'q':
+-         res = fileno(((quicktime_t *)lav_file->qt_fd)->stream);
++         res = lqt_fileno((quicktime_t *)lav_file->qt_fd);
+          break;
+ #endif
+       default:
+--- mjpegtools-1.8.0/y4mdenoise/Region2D.hh.orig	2004-07-18 08:43:01.000000000 +0200
++++ mjpegtools-1.8.0/y4mdenoise/Region2D.hh	2006-03-20 02:21:32.000000000 +0100
+@@ -15,6 +15,7 @@
+ // code that will work with any implementation of regions.
+ 
+ #include "Status_t.h"
++#include <cassert>
+ #include <iostream>
+ 
+ 
