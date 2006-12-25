@@ -27,7 +27,9 @@ BuildRequires:	libpng-devel
 %{?with_quicktime:BuildRequires:	libquicktime-devel >= 0.9.4}
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	pkgconfig
-BuildRequires:	xorg-lib-libXxf86dga-devel
+BuildRequires:	xorg-lib-libX11-devel
+# only checked for, not used for anything
+#BuildRequires:	xorg-lib-libXxf86dga-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	libmjpegtools0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -65,6 +67,13 @@ Summary(pl):	Pliki nag³ówkowe mjpegtools
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	libmjpegtools0-devel
+# libmjpegutils has no additional deps
+# liblavfile R: libquicktime-devel libdv-devel
+# liblavjpeg R: libjpeg-devel
+# liblavplay R: SDL-devel xorg-lib-libX11-devel +liblavfile,liblavjpeg
+# liblavrec R: +liblavfile,liblavjpeg
+# libmpeg2encpp R: libstdc++-devel
+# libmplex2 R: libstdc++-devel
 
 %description devel
 This package contains C system header files needed to compile
