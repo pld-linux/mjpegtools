@@ -4,7 +4,7 @@
 # TODO
 # - configure:   - MPEG Z/Alpha                  : false
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
-Summary(pl):	Narzêdzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
+Summary(pl.UTF-8):   NarzÄ™dzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
 Version:	1.8.0
 Release:	1
@@ -42,28 +42,28 @@ DC10(+), Marvel G200/G400), these can also playback video using the
 hardware. With the rest of the tools, this video can be edited and
 encoded into MPEG 1/2 or DivX video.
 
-%description -l pl
-MJPEG-tools to podstawowy zestaw narzêdzi do nagrywania, edycji,
-odtwarzania i kodowania (do MPEG) obrazu pod Linuksem. Nagrywaæ mo¿na
-przy u¿yciu kart MJPEG opartych na Zoranie (LML33, Iomega Buz,
-Pinnacle DC10(+), Marvel G200/G400), na nich mo¿na tak¿e odtwarzaæ
-obraz ze wsparciem sprzêtowym. Przy pomocy pozosta³ych narzêdzi obraz
-mo¿na obrabiaæ i kodowaæ do formatu MPEG 1/2 lub DivX.
+%description -l pl.UTF-8
+MJPEG-tools to podstawowy zestaw narzÄ™dzi do nagrywania, edycji,
+odtwarzania i kodowania (do MPEG) obrazu pod Linuksem. NagrywaÄ‡ moÅ¼na
+przy uÅ¼yciu kart MJPEG opartych na Zoranie (LML33, Iomega Buz,
+Pinnacle DC10(+), Marvel G200/G400), na nich moÅ¼na takÅ¼e odtwarzaÄ‡
+obraz ze wsparciem sprzÄ™towym. Przy pomocy pozostaÅ‚ych narzÄ™dzi obraz
+moÅ¼na obrabiaÄ‡ i kodowaÄ‡ do formatu MPEG 1/2 lub DivX.
 
 %package libs
 Summary:	MJPEG-tools shared libraries
-Summary(pl):	Biblioteki wspó³dzielone MJPEG-tools
+Summary(pl.UTF-8):   Biblioteki wspÃ³Å‚dzielone MJPEG-tools
 Group:		Libraries
 
 %description libs
 MJPEG-tools shared libraries.
 
-%description libs -l pl
-Biblioteki wspó³dzielone MJPEG-tools.
+%description libs -l pl.UTF-8
+Biblioteki wspÃ³Å‚dzielone MJPEG-tools.
 
 %package devel
 Summary:	Development headers for the mjpegtools
-Summary(pl):	Pliki nag³ówkowe mjpegtools
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe mjpegtools
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	libmjpegtools0-devel
@@ -79,20 +79,20 @@ Obsoletes:	libmjpegtools0-devel
 This package contains C system header files needed to compile
 applications that use part of the libraries of the mjpegtools package.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe C potrzebne do kompilowania
-aplikacji u¿ywaj±cych czê¶ci bibliotek z pakietu mjpegtools.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagÅ‚Ã³wkowe C potrzebne do kompilowania
+aplikacji uÅ¼ywajÄ…cych czÄ™Å›ci bibliotek z pakietu mjpegtools.
 
 %package static
 Summary:	Static libraries for mjpegtools
-Summary(pl):	Statyczne biblioteki mjpegtools
+Summary(pl.UTF-8):   Statyczne biblioteki mjpegtools
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libraries for mjpegtools.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczne biblioteki mjpegtools.
 
 %prep
