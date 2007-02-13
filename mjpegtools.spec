@@ -4,7 +4,7 @@
 # TODO
 # - configure:   - MPEG Z/Alpha                  : false
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
-Summary(pl.UTF-8):   Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
+Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
 Version:	1.8.0
 Release:	1
@@ -52,7 +52,7 @@ można obrabiać i kodować do formatu MPEG 1/2 lub DivX.
 
 %package libs
 Summary:	MJPEG-tools shared libraries
-Summary(pl.UTF-8):   Biblioteki współdzielone MJPEG-tools
+Summary(pl.UTF-8):	Biblioteki współdzielone MJPEG-tools
 Group:		Libraries
 
 %description libs
@@ -63,7 +63,7 @@ Biblioteki współdzielone MJPEG-tools.
 
 %package devel
 Summary:	Development headers for the mjpegtools
-Summary(pl.UTF-8):   Pliki nagłówkowe mjpegtools
+Summary(pl.UTF-8):	Pliki nagłówkowe mjpegtools
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	libmjpegtools0-devel
@@ -85,7 +85,7 @@ aplikacji używających części bibliotek z pakietu mjpegtools.
 
 %package static
 Summary:	Static libraries for mjpegtools
-Summary(pl.UTF-8):   Statyczne biblioteki mjpegtools
+Summary(pl.UTF-8):	Statyczne biblioteki mjpegtools
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
