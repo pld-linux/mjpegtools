@@ -17,6 +17,7 @@ Patch1:		%{name}-headers.patch
 Patch2:		%{name}-gcc4.patch
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.1.3
+BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gtk+2-devel >= 2:2.4.0
@@ -27,9 +28,6 @@ BuildRequires:	libpng-devel
 %{?with_quicktime:BuildRequires:	libquicktime-devel >= 0.9.4}
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	pkgconfig
-BuildRequires:	xorg-lib-libX11-devel
-# only checked for, not used for anything
-#BuildRequires:	xorg-lib-libXxf86dga-devel
 Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	libmjpegtools0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
