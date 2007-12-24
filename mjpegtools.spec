@@ -15,6 +15,7 @@ Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-headers.patch
 Patch2:		%{name}-gcc4.patch
+Patch3:		%{name}-make-jN.patch
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.1.3
 BuildRequires:	autoconf >= 2.57
@@ -100,6 +101,7 @@ Statyczne biblioteki mjpegtools.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}
