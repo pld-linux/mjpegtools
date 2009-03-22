@@ -6,17 +6,12 @@
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
 Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
-Version:	1.8.0
-Release:	4
+Version:	1.9.0
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
-# Source0-md5:	6fd98362310480bdaf7171e9659f165f
-Patch0:		%{name}-link.patch
-Patch1:		%{name}-headers.patch
-Patch2:		%{name}-gcc4.patch
-Patch3:		%{name}-make-jN.patch
-Patch4:		%{name}-lavrec-memleak.patch
+# Source0-md5:	309a6fcf0900a010d6a9c1e91afc2f5c
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.1.3
 BuildRequires:	autoconf >= 2.57
@@ -99,11 +94,6 @@ Statyczne biblioteki mjpegtools.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 %{__libtoolize}
@@ -165,6 +155,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS CHANGES HINTS PLANS README TODO
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.0
 %{_mandir}/man5/*
 
 %files devel
