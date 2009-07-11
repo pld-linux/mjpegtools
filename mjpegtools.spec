@@ -7,11 +7,12 @@ Summary:	Tools for recording, editing, playing back and MPEG-encoding video unde
 Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
 Version:	1.9.0
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
 # Source0-md5:	309a6fcf0900a010d6a9c1e91afc2f5c
+Patch0:		%{name}-1.9.0-glibc-2.10.patch
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.1.3
 BuildRequires:	autoconf >= 2.57
@@ -94,6 +95,7 @@ Statyczne biblioteki mjpegtools.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
