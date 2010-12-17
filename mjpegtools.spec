@@ -10,7 +10,7 @@ Version:	1.9.0
 Release:	6
 License:	GPL
 Group:		Applications/Graphics
-Source0:	http://dl.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
 # Source0-md5:	309a6fcf0900a010d6a9c1e91afc2f5c
 Patch0:		%{name}-1.9.0-glibc-2.10.patch
 URL:		http://mjpeg.sourceforge.net/
@@ -103,7 +103,6 @@ Statyczne biblioteki mjpegtools.
 %{__autoheader}
 %{__automake}
 %configure \
-	--with-dv=%{_prefix} \
 	%{!?with_quicktime:--without-libquicktime} \
 %ifarch ppc
 	--disable-simd-accel
@@ -117,15 +116,15 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_infodir}/dir*
+rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p	/sbin/postshell
+%post	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun	-p	/sbin/postshell
+%postun	-p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %post	libs -p /sbin/ldconfig
@@ -133,39 +132,86 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/lav*
-%attr(755,root,root) %{_bindir}/yuv*
-%attr(755,root,root) %{_bindir}/jpeg2yuv
-%attr(755,root,root) %{_bindir}/testrec
-%attr(755,root,root) %{_bindir}/y4m*
-%attr(755,root,root) %{_bindir}/pgm*
-%attr(755,root,root) %{_bindir}/png2yuv
-%attr(755,root,root) %{_bindir}/ppm*
-%attr(755,root,root) %{_bindir}/glav
-%attr(755,root,root) %{_bindir}/ypipe
-%attr(755,root,root) %{_bindir}/mp*
-%attr(755,root,root) %{_bindir}/*.flt
 %attr(755,root,root) %{_bindir}/anytovcd.sh
+%attr(755,root,root) %{_bindir}/glav
+%attr(755,root,root) %{_bindir}/jpeg2yuv
+%attr(755,root,root) %{_bindir}/lav*
+%attr(755,root,root) %{_bindir}/matteblend.flt
 %attr(755,root,root) %{_bindir}/mjpeg_simd_helper
+%attr(755,root,root) %{_bindir}/mp2enc
+%attr(755,root,root) %{_bindir}/mpeg2enc
+%attr(755,root,root) %{_bindir}/mpegtranscode
+%attr(755,root,root) %{_bindir}/mplex
+%attr(755,root,root) %{_bindir}/multiblend.flt
+%attr(755,root,root) %{_bindir}/pgmtoy4m
+%attr(755,root,root) %{_bindir}/png2yuv
 %attr(755,root,root) %{_bindir}/pnmtoy4m
+%attr(755,root,root) %{_bindir}/ppmtoy4m
+%attr(755,root,root) %{_bindir}/qttoy4m
+%attr(755,root,root) %{_bindir}/testrec
+%attr(755,root,root) %{_bindir}/transist.flt
+%attr(755,root,root) %{_bindir}/y4m*
+%attr(755,root,root) %{_bindir}/ypipe
+%attr(755,root,root) %{_bindir}/yuv*
 %attr(755,root,root) %{_bindir}/yuyvtoy4m
-%{_mandir}/man1/*
-%{_infodir}/mjpeg-howto*
+%{_mandir}/man1/jpeg2yuv.1*
+%{_mandir}/man1/lav*.1*
+%{_mandir}/man1/mjpegtools.1*
+%{_mandir}/man1/mp2enc.1*
+%{_mandir}/man1/mpeg2enc.1*
+%{_mandir}/man1/mplex.1*
+%{_mandir}/man1/pgmtoy4m.1*
+%{_mandir}/man1/png2yuv.1*
+%{_mandir}/man1/pnmtoy4m.1*
+%{_mandir}/man1/ppmtoy4m.1*
+%{_mandir}/man1/y4m*.1*
+%{_mandir}/man1/yuv*.1*
+%{_infodir}/mjpeg-howto.info*
 
 %files libs
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS CHANGES HINTS PLANS README TODO
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/lib*.so.0
-%{_mandir}/man5/*
+%attr(755,root,root) %{_libdir}/liblavfile-1.9.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavfile-1.9.so.0
+%attr(755,root,root) %{_libdir}/liblavjpeg-1.9.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavjpeg-1.9.so.0
+%attr(755,root,root) %{_libdir}/liblavplay-1.9.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavplay-1.9.so.0
+%attr(755,root,root) %{_libdir}/liblavrec-1.9.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavrec-1.9.so.0
+%attr(755,root,root) %{_libdir}/libmjpegutils-1.9.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmjpegutils-1.9.so.0
+%attr(755,root,root) %{_libdir}/libmpeg2encpp-1.9.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmpeg2encpp-1.9.so.0
+%attr(755,root,root) %{_libdir}/libmplex2-1.9.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmplex2-1.9.so.0
+%{_mandir}/man5/yuv4mpeg.5*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/liblavfile.so
+%attr(755,root,root) %{_libdir}/liblavjpeg.so
+%attr(755,root,root) %{_libdir}/liblavplay.so
+%attr(755,root,root) %{_libdir}/liblavrec.so
+%attr(755,root,root) %{_libdir}/libmjpegutils.so
+%attr(755,root,root) %{_libdir}/libmpeg2encpp.so
+%attr(755,root,root) %{_libdir}/libmplex2.so
+%{_libdir}/liblavfile.la
+%{_libdir}/liblavjpeg.la
+%{_libdir}/liblavplay.la
+%{_libdir}/liblavrec.la
+%{_libdir}/libmjpegutils.la
+%{_libdir}/libmpeg2encpp.la
+%{_libdir}/libmplex2.la
 %{_includedir}/mjpegtools
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/mjpegtools.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/liblavfile.a
+%{_libdir}/liblavjpeg.a
+%{_libdir}/liblavplay.a
+%{_libdir}/liblavrec.a
+%{_libdir}/libmjpegutils.a
+%{_libdir}/libmpeg2encpp.a
+%{_libdir}/libmplex2.a
