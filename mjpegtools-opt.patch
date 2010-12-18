@@ -1,0 +1,12 @@
+--- mjpegtools-1.9.0/configure.ac.orig	2009-01-06 07:33:48.000000000 +0100
++++ mjpegtools-1.9.0/configure.ac	2010-12-18 10:31:59.570115231 +0100
+@@ -426,7 +426,8 @@
+ dnl correctly is complex and lengthy (about as long as the entire configure.ac
+ dnl file).
+ 
+-if test x$have_x86cpu = xtrue -o x$have_ppccpu = xtrue; then
++ARCHFLAGS=
++if false; then
+   if test x$host_alias != x; then
+     dnl This is to allow cross compiling
+     AC_MSG_CHECKING(sub-architecture settings)

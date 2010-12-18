@@ -1,8 +1,7 @@
 #
 # Conditional build:
 %bcond_without	quicktime	# without Quicktime playback/recording support
-# TODO
-# - configure:   - MPEG Z/Alpha                  : false
+#
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
 Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
@@ -13,15 +12,18 @@ Group:		Applications/Graphics
 Source0:	http://downloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
 # Source0-md5:	309a6fcf0900a010d6a9c1e91afc2f5c
 Patch0:		%{name}-1.9.0-glibc-2.10.patch
+Patch1:		%{name}-opt.patch
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.1.3
+BuildRequires:	SDL_gfx-devel
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	libdv-devel >= 0.9.5
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
-%{?with_quicktime:BuildRequires:	libquicktime-devel >= 0.9.4}
+%{?with_quicktime:BuildRequires:	libquicktime-devel >= 0.9.7}
+BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	pkgconfig
 BuildRequires:	xorg-lib-libX11-devel
@@ -51,6 +53,7 @@ można obrabiać i kodować do formatu MPEG 1/2 lub DivX.
 Summary:	MJPEG-tools shared libraries
 Summary(pl.UTF-8):	Biblioteki współdzielone MJPEG-tools
 Group:		Libraries
+Requires:	libquicktime >= 0.9.7
 
 %description libs
 MJPEG-tools shared libraries.
@@ -65,7 +68,7 @@ Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Obsoletes:	libmjpegtools0-devel
 # libmjpegutils has no additional deps
-# liblavfile R: libquicktime-devel libdv-devel
+# liblavfile R: libquicktime-devel >= 0.9.7 libdv-devel
 # liblavjpeg R: libjpeg-devel
 # liblavplay R: SDL-devel xorg-lib-libX11-devel +liblavfile,liblavjpeg
 # liblavrec R: +liblavfile,liblavjpeg
@@ -95,6 +98,7 @@ Statyczne biblioteki mjpegtools.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -132,6 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc README.glav README.lavpipe README.transist
 %attr(755,root,root) %{_bindir}/anytovcd.sh
 %attr(755,root,root) %{_bindir}/glav
 %attr(755,root,root) %{_bindir}/jpeg2yuv
@@ -170,7 +175,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS CHANGES HINTS PLANS README TODO
+%doc AUTHORS BUGS CHANGES HINTS PLANS README README.DV README.avilib TODO
 %attr(755,root,root) %{_libdir}/liblavfile-1.9.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/liblavfile-1.9.so.0
 %attr(755,root,root) %{_libdir}/liblavjpeg-1.9.so.*.*.*
