@@ -1,0 +1,8 @@
+--- mjpegtools-2.0.0/y4mdenoise/Makefile.am~	2011-05-21 14:08:44.000000000 +0200
++++ mjpegtools-2.0.0/y4mdenoise/Makefile.am	2012-02-10 20:21:11.918302086 +0100
+@@ -41,4 +41,4 @@
+ regiontest_SOURCES = regiontest.cc
+ 
+ y4mdenoise_SOURCES = main.c newdenoise.cc
+-y4mdenoise_LDADD = $(LIBMJPEGUTILS)
++y4mdenoise_LDADD = $(LIBMJPEGUTILS) @PTHREAD_LIBS@

@@ -5,14 +5,14 @@
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
 Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
-Version:	1.9.0
-Release:	8
+Version:	2.0.0
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://downloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
-# Source0-md5:	309a6fcf0900a010d6a9c1e91afc2f5c
-Patch0:		%{name}-1.9.0-glibc-2.10.patch
-Patch1:		%{name}-opt.patch
+# Source0-md5:	903e1e3b967eebcc5fe5626d7517dc46
+Patch0:		%{name}-opt.patch
+Patch1:		%{name}-pthread.patch
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.1.3
 BuildRequires:	SDL_gfx-devel
@@ -107,6 +107,7 @@ Statyczne biblioteki mjpegtools.
 %{__autoheader}
 %{__automake}
 %configure \
+	PTHREAD_LIBS="-lpthread" \
 	%{!?with_quicktime:--without-libquicktime} \
 %ifarch ppc
 	--disable-simd-accel
@@ -153,7 +154,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/pnmtoy4m
 %attr(755,root,root) %{_bindir}/ppmtoy4m
 %attr(755,root,root) %{_bindir}/qttoy4m
-%attr(755,root,root) %{_bindir}/testrec
 %attr(755,root,root) %{_bindir}/transist.flt
 %attr(755,root,root) %{_bindir}/y4m*
 %attr(755,root,root) %{_bindir}/ypipe
@@ -176,20 +176,18 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS CHANGES HINTS PLANS README README.DV README.avilib TODO
-%attr(755,root,root) %{_libdir}/liblavfile-1.9.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavfile-1.9.so.0
-%attr(755,root,root) %{_libdir}/liblavjpeg-1.9.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavjpeg-1.9.so.0
-%attr(755,root,root) %{_libdir}/liblavplay-1.9.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavplay-1.9.so.0
-%attr(755,root,root) %{_libdir}/liblavrec-1.9.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavrec-1.9.so.0
-%attr(755,root,root) %{_libdir}/libmjpegutils-1.9.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmjpegutils-1.9.so.0
-%attr(755,root,root) %{_libdir}/libmpeg2encpp-1.9.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmpeg2encpp-1.9.so.0
-%attr(755,root,root) %{_libdir}/libmplex2-1.9.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmplex2-1.9.so.0
+%attr(755,root,root) %{_libdir}/liblavfile-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavfile-2.0.so.0
+%attr(755,root,root) %{_libdir}/liblavjpeg-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavjpeg-2.0.so.0
+%attr(755,root,root) %{_libdir}/liblavplay-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavplay-2.0.so.0
+%attr(755,root,root) %{_libdir}/libmjpegutils-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmjpegutils-2.0.so.0
+%attr(755,root,root) %{_libdir}/libmpeg2encpp-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmpeg2encpp-2.0.so.0
+%attr(755,root,root) %{_libdir}/libmplex2-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmplex2-2.0.so.0
 %{_mandir}/man5/yuv4mpeg.5*
 
 %files devel
@@ -197,14 +195,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/liblavfile.so
 %attr(755,root,root) %{_libdir}/liblavjpeg.so
 %attr(755,root,root) %{_libdir}/liblavplay.so
-%attr(755,root,root) %{_libdir}/liblavrec.so
 %attr(755,root,root) %{_libdir}/libmjpegutils.so
 %attr(755,root,root) %{_libdir}/libmpeg2encpp.so
 %attr(755,root,root) %{_libdir}/libmplex2.so
 %{_libdir}/liblavfile.la
 %{_libdir}/liblavjpeg.la
 %{_libdir}/liblavplay.la
-%{_libdir}/liblavrec.la
 %{_libdir}/libmjpegutils.la
 %{_libdir}/libmpeg2encpp.la
 %{_libdir}/libmplex2.la
@@ -216,7 +212,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/liblavfile.a
 %{_libdir}/liblavjpeg.a
 %{_libdir}/liblavplay.a
-%{_libdir}/liblavrec.a
 %{_libdir}/libmjpegutils.a
 %{_libdir}/libmpeg2encpp.a
 %{_libdir}/libmplex2.a
