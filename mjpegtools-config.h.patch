@@ -1,0 +1,10 @@
+--- mjpegtools-2.0.0/mplex/stream_params.hpp~	2010-03-13 14:05:07.000000000 +0100
++++ mjpegtools-2.0.0/mplex/stream_params.hpp	2012-02-12 23:46:33.883399235 +0100
+@@ -23,7 +23,6 @@
+ #ifndef __STREAM_PARAMS_HH__
+ #define __STREAM_PARAMS_HH__
+ 
+-#include <config.h>
+ #include <mjpeg_types.h>
+ class LpcmParams
+ {
