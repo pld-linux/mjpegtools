@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do 
 Name:		mjpegtools
 Version:	2.0.0
 Release:	2
-License:	GPL
+License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	http://downloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
 # Source0-md5:	903e1e3b967eebcc5fe5626d7517dc46
@@ -21,7 +21,7 @@ BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	libdv-devel >= 0.9.5
-BuildRequires:	libjpeg-devel
+BuildRequires:	libjpeg-devel >= 6b
 BuildRequires:	libpng-devel
 %{?with_quicktime:BuildRequires:	libquicktime-devel >= 0.9.7}
 BuildRequires:	libstdc++-devel
