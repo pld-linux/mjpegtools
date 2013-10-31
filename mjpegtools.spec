@@ -5,15 +5,15 @@
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
 Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
-Version:	2.0.0
-Release:	3
+Version:	2.1.0
+Release:	1
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	http://downloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
-# Source0-md5:	903e1e3b967eebcc5fe5626d7517dc46
+# Source0-md5:	57bf5dd78976ca9bac972a6511b236f3
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pthread.patch
-Patch2:		%{name}-config.h.patch
+Patch2:		%{name}-sec.patch
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.1.3
 BuildRequires:	SDL_gfx-devel
@@ -178,18 +178,18 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS CHANGES HINTS PLANS README README.DV README.avilib TODO
-%attr(755,root,root) %{_libdir}/liblavfile-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavfile-2.0.so.0
-%attr(755,root,root) %{_libdir}/liblavjpeg-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavjpeg-2.0.so.0
-%attr(755,root,root) %{_libdir}/liblavplay-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavplay-2.0.so.0
-%attr(755,root,root) %{_libdir}/libmjpegutils-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmjpegutils-2.0.so.0
-%attr(755,root,root) %{_libdir}/libmpeg2encpp-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmpeg2encpp-2.0.so.0
-%attr(755,root,root) %{_libdir}/libmplex2-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmplex2-2.0.so.0
+%attr(755,root,root) %{_libdir}/liblavfile-2.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavfile-2.1.so.0
+%attr(755,root,root) %{_libdir}/liblavjpeg-2.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavjpeg-2.1.so.0
+%attr(755,root,root) %{_libdir}/liblavplay-2.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavplay-2.1.so.0
+%attr(755,root,root) %{_libdir}/libmjpegutils-2.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmjpegutils-2.1.so.0
+%attr(755,root,root) %{_libdir}/libmpeg2encpp-2.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmpeg2encpp-2.1.so.0
+%attr(755,root,root) %{_libdir}/libmplex2-2.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmplex2-2.1.so.0
 %{_mandir}/man5/yuv4mpeg.5*
 
 %files devel
