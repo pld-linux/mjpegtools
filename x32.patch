@@ -1,0 +1,22 @@
+--- mjpegtools-2.1.0/utils/cpu_accel.c.orig	2010-09-19 23:21:37.000000000 +0200
++++ mjpegtools-2.1.0/utils/cpu_accel.c	2015-04-03 23:40:52.986289070 +0200
+@@ -117,14 +117,18 @@
+ 
+ static int x86_accel (void)
+ {
++#if defined(__ILP32__)
++    long long eax, ebx, ecx, edx;
++#else
+     long eax, ebx, ecx, edx;
++#endif
+     int32_t AMD;
+     int32_t caps;
+ 
+ 	/* Slightly weirdified cpuid that preserves the ebx and edi required
+ 	   by gcc for PIC offset table and frame pointer */
+ 
+-#if defined(__LP64__) || defined(_LP64)
++#if defined(__LP64__) || defined(_LP64) || defined(__ILP32__)
+ #  define REG_b "rbx"
+ #  define REG_S "rsi"
+ #else
