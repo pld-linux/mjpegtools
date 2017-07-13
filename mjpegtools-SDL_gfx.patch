@@ -1,0 +1,10 @@
+--- mjpegtools-2.1.0/y4mutils/Makefile.am.orig	2012-04-01 10:43:35.000000000 +0200
++++ mjpegtools-2.1.0/y4mutils/Makefile.am	2017-07-13 21:32:08.502982119 +0200
+@@ -43,6 +43,7 @@
+ y4mspatialfilter_LDADD = $(LIBMJPEGUTILS) $(LIBM_LIBS)
+ 
+ y4mhist_SOURCES = y4mhist.c
++y4mhist_CPPFLAGS = $(AM_CPPFLAGS) $(SDL_CFLAGS)
+ y4mhist_LDADD = $(SDL_LIBS) $(SDLgfx_LIBS) $(LIBMJPEGUTILS)
+ 
+ y4mblack_SOURCES = y4mblack.c

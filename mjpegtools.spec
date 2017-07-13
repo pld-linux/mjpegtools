@@ -6,7 +6,7 @@ Summary:	Tools for recording, editing, playing back and MPEG-encoding video unde
 Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
 Version:	2.1.0
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	http://downloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pthread.patch
 Patch2:		%{name}-sec.patch
 Patch3:		x32.patch
+Patch4:		%{name}-SDL_gfx.patch
 URL:		http://mjpeg.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.1.3
 BuildRequires:	SDL_gfx-devel
@@ -103,6 +104,7 @@ Statyczne biblioteki mjpegtools.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %{__libtoolize}
