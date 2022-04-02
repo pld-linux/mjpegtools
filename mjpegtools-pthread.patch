@@ -5,4 +5,4 @@
  
  y4mdenoise_SOURCES = main.c newdenoise.cc
 -y4mdenoise_LDADD = $(LIBMJPEGUTILS)
-+y4mdenoise_LDADD = $(LIBMJPEGUTILS) @PTHREAD_LIBS@
++y4mdenoise_LDADD = $(LIBMJPEGUTILS) $(PTHREAD_LIBS)

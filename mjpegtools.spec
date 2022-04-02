@@ -1,22 +1,23 @@
 #
 # Conditional build:
 %bcond_without	quicktime	# without Quicktime playback/recording support
+%bcond_with	simd		# MMX/SSE/Altivec instructions
 #
+%ifarch pentium3 pentium4 %{x8664} x32
+%define	with_simd	1
+%endif
 Summary:	Tools for recording, editing, playing back and MPEG-encoding video under Linux
 Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
-Version:	2.1.0
-Release:	4
+Version:	2.2.1
+Release:	1
 License:	GPL v2+
 Group:		Applications/Graphics
-Source0:	http://downloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
-# Source0-md5:	57bf5dd78976ca9bac972a6511b236f3
-Patch0:		%{name}-opt.patch
-Patch1:		%{name}-pthread.patch
-Patch2:		%{name}-sec.patch
-Patch3:		x32.patch
-Patch4:		%{name}-SDL_gfx.patch
-URL:		http://mjpeg.sourceforge.net/
+Source0:	https://downloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
+# Source0-md5:	168e0131c0b8a2e31df7a73eb602fc32
+Patch0:		%{name}-pthread.patch
+Patch1:		x32.patch
+URL:		https://mjpeg.sourceforge.io/
 BuildRequires:	SDL-devel >= 1.1.3
 BuildRequires:	SDL_gfx-devel
 BuildRequires:	autoconf >= 2.57
@@ -33,7 +34,7 @@ BuildRequires:	xorg-lib-libX11-devel
 # only checked for, not used for anything
 #BuildRequires:	xorg-lib-libXxf86dga-devel
 Requires:	%{name}-libs = %{version}-%{release}
-Obsoletes:	libmjpegtools0
+Obsoletes:	libmjpegtools0 < 2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -69,7 +70,7 @@ Summary:	Development headers for the mjpegtools
 Summary(pl.UTF-8):	Pliki nagłówkowe mjpegtools
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Obsoletes:	libmjpegtools0-devel
+Obsoletes:	libmjpegtools0-devel < 2
 # libmjpegutils has no additional deps
 # liblavfile R: libquicktime-devel >= 0.9.7 libdv-devel
 # liblavjpeg R: libjpeg-devel
@@ -102,9 +103,6 @@ Statyczne biblioteki mjpegtools.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 %{__libtoolize}
@@ -115,7 +113,7 @@ Statyczne biblioteki mjpegtools.
 %configure \
 	PTHREAD_LIBS="-lpthread" \
 	%{!?with_quicktime:--without-libquicktime} \
-%ifarch ppc
+%if %{without simd}
 	--disable-simd-accel
 %endif
 
@@ -143,7 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.glav README.lavpipe README.transist
+%doc README.lavpipe README.transist
 %attr(755,root,root) %{_bindir}/anytovcd.sh
 %attr(755,root,root) %{_bindir}/glav
 %attr(755,root,root) %{_bindir}/jpeg2yuv
@@ -182,18 +180,18 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS CHANGES HINTS PLANS README README.DV README.avilib TODO
-%attr(755,root,root) %{_libdir}/liblavfile-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavfile-2.1.so.0
-%attr(755,root,root) %{_libdir}/liblavjpeg-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavjpeg-2.1.so.0
-%attr(755,root,root) %{_libdir}/liblavplay-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavplay-2.1.so.0
-%attr(755,root,root) %{_libdir}/libmjpegutils-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmjpegutils-2.1.so.0
-%attr(755,root,root) %{_libdir}/libmpeg2encpp-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmpeg2encpp-2.1.so.0
-%attr(755,root,root) %{_libdir}/libmplex2-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmplex2-2.1.so.0
+%attr(755,root,root) %{_libdir}/liblavfile-2.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavfile-2.2.so.0
+%attr(755,root,root) %{_libdir}/liblavjpeg-2.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavjpeg-2.2.so.0
+%attr(755,root,root) %{_libdir}/liblavplay-2.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liblavplay-2.2.so.0
+%attr(755,root,root) %{_libdir}/libmjpegutils-2.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmjpegutils-2.2.so.0
+%attr(755,root,root) %{_libdir}/libmpeg2encpp-2.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmpeg2encpp-2.2.so.0
+%attr(755,root,root) %{_libdir}/libmplex2-2.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmplex2-2.2.so.0
 %{_mandir}/man5/yuv4mpeg.5*
 
 %files devel

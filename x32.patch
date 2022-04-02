@@ -4,7 +4,7 @@
  
  static int x86_accel (void)
  {
-+#if defined(__ILP32__)
++#if defined(__x86_64__) && defined(__ILP32__)
 +    long long eax, ebx, ecx, edx;
 +#else
      long eax, ebx, ecx, edx;
@@ -16,7 +16,7 @@
  	   by gcc for PIC offset table and frame pointer */
  
 -#if defined(__LP64__) || defined(_LP64)
-+#if defined(__LP64__) || defined(_LP64) || defined(__ILP32__)
++#if defined(__x86_64__)  /* also x32 */
  #  define REG_b "rbx"
  #  define REG_S "rsi"
  #else
