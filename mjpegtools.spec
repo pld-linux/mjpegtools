@@ -10,7 +10,7 @@ Summary:	Tools for recording, editing, playing back and MPEG-encoding video unde
 Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
 Version:	2.2.1
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	https://downloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
@@ -57,7 +57,7 @@ można obrabiać i kodować do formatu MPEG 1/2 lub DivX.
 Summary:	MJPEG-tools shared libraries
 Summary(pl.UTF-8):	Biblioteki współdzielone MJPEG-tools
 Group:		Libraries
-Requires:	libquicktime >= 0.9.7
+%{?with_quicktime:Requires:	libquicktime >= 0.9.7}`
 
 %description libs
 MJPEG-tools shared libraries.
