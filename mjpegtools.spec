@@ -157,7 +157,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/png2yuv
 %attr(755,root,root) %{_bindir}/pnmtoy4m
 %attr(755,root,root) %{_bindir}/ppmtoy4m
-%attr(755,root,root) %{_bindir}/qttoy4m
+%{?with_quicktime:%attr(755,root,root) %{_bindir}/qttoy4m}
 %attr(755,root,root) %{_bindir}/transist.flt
 %attr(755,root,root) %{_bindir}/y4m*
 %attr(755,root,root) %{_bindir}/ypipe
