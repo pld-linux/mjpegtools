@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	quicktime	# without Quicktime playback/recording support
+%bcond_with	quicktime	# without Quicktime playback/recording support
 %bcond_with	simd		# MMX/SSE/Altivec instructions
 #
 %ifarch pentium3 pentium4 %{x8664} x32
@@ -10,7 +10,7 @@ Summary:	Tools for recording, editing, playing back and MPEG-encoding video unde
 Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
 Version:	2.2.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	https://downloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
