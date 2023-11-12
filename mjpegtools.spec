@@ -57,7 +57,7 @@ można obrabiać i kodować do formatu MPEG 1/2 lub DivX.
 Summary:	MJPEG-tools shared libraries
 Summary(pl.UTF-8):	Biblioteki współdzielone MJPEG-tools
 Group:		Libraries
-%{?with_quicktime:Requires:	libquicktime >= 0.9.7}`
+%{?with_quicktime:Requires:	libquicktime >= 0.9.7}
 
 %description libs
 MJPEG-tools shared libraries.
