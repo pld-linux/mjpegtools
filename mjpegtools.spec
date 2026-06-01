@@ -10,7 +10,7 @@ Summary:	Tools for recording, editing, playing back and MPEG-encoding video unde
 Summary(pl.UTF-8):	Narzędzia do nagrywania, edycji, odtwarzania i kodowania do MPEG obrazu
 Name:		mjpegtools
 Version:	2.2.1
-Release:	3
+Release:	4
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	https://downloads.sourceforge.net/mjpeg/%{name}-%{version}.tar.gz
@@ -180,28 +180,28 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS CHANGES HINTS PLANS README README.DV README.avilib TODO
-%attr(755,root,root) %{_libdir}/liblavfile-2.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavfile-2.2.so.0
-%attr(755,root,root) %{_libdir}/liblavjpeg-2.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavjpeg-2.2.so.0
-%attr(755,root,root) %{_libdir}/liblavplay-2.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/liblavplay-2.2.so.0
-%attr(755,root,root) %{_libdir}/libmjpegutils-2.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmjpegutils-2.2.so.0
-%attr(755,root,root) %{_libdir}/libmpeg2encpp-2.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmpeg2encpp-2.2.so.0
-%attr(755,root,root) %{_libdir}/libmplex2-2.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmplex2-2.2.so.0
+%{_libdir}/liblavfile-2.2.so.*.*.*
+%ghost %{_libdir}/liblavfile-2.2.so.0
+%{_libdir}/liblavjpeg-2.2.so.*.*.*
+%ghost %{_libdir}/liblavjpeg-2.2.so.0
+%{_libdir}/liblavplay-2.2.so.*.*.*
+%ghost %{_libdir}/liblavplay-2.2.so.0
+%{_libdir}/libmjpegutils-2.2.so.*.*.*
+%ghost %{_libdir}/libmjpegutils-2.2.so.0
+%{_libdir}/libmpeg2encpp-2.2.so.*.*.*
+%ghost %{_libdir}/libmpeg2encpp-2.2.so.0
+%{_libdir}/libmplex2-2.2.so.*.*.*
+%ghost %{_libdir}/libmplex2-2.2.so.0
 %{_mandir}/man5/yuv4mpeg.5*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/liblavfile.so
-%attr(755,root,root) %{_libdir}/liblavjpeg.so
-%attr(755,root,root) %{_libdir}/liblavplay.so
-%attr(755,root,root) %{_libdir}/libmjpegutils.so
-%attr(755,root,root) %{_libdir}/libmpeg2encpp.so
-%attr(755,root,root) %{_libdir}/libmplex2.so
+%{_libdir}/liblavfile.so
+%{_libdir}/liblavjpeg.so
+%{_libdir}/liblavplay.so
+%{_libdir}/libmjpegutils.so
+%{_libdir}/libmpeg2encpp.so
+%{_libdir}/libmplex2.so
 %{_libdir}/liblavfile.la
 %{_libdir}/liblavjpeg.la
 %{_libdir}/liblavplay.la
